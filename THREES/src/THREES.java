@@ -14,7 +14,10 @@ public class THREES {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        jeu jeu = new jeu();
-        jeu.afficher();
+        jeu j = new jeu();
+        j.afficher();
+        System.out.println("Déplacement gauche");
+        j.deplacerGauche();
+        j.afficher();
     }
 }
