@@ -1,6 +1,3 @@
-
-import static java.lang.Math.random;
-
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
@@ -17,11 +14,22 @@ public class jeu {
         grille = new Grille();
         initialiser();
     }
+    
 
     private void initialiser() {
-        // pour l’instant, on met quelques valeurs à la main
-        grille.ecrireCase(0, 0, 1);
-        grille.ecrireCase(0, 1, 2);
+            int tuilesAplacer = 9;
+        
+        while (tuilesAplacer > 0) {
+            int ligne = (int)(Math.random() * 4);
+            int colonne = (int)(Math.random() * 4);
+            
+            if (grille.estvide(ligne, colonne)) {
+
+                int valeur = (int)(Math.random() * 3) + 1;
+                grille.ecrireCase(ligne, colonne, valeur);
+                tuilesAplacer--;
+            }
+        }
     }
 
     public void afficher() {
@@ -186,16 +194,29 @@ private boolean modifiee(int[][] avant) {
     return false;
 }
 private void ajouterTuile() {
-    int ligne, colonne;
+    int ligne;
+    int colonne;
+    boolean caseVideTrouvee = false;
+        
+    while (caseVideTrouvee == false) {
+        ligne = (int)(Math.random() * 4);
+        colonne = (int)(Math.random() * 4);
+// on vérifie si cette case est vide
+        if (grille.estvide(ligne, colonne)) {
+        // si case vide trouvée alors on sort de la boucle
+            caseVideTrouvee = true;
 
-    do {
-        ligne = (int)(random() * 4);
-        colonne = (int)(random() * 4);
-    } while (!grille.estvide(ligne, colonne));
+            int valeur;
+            if (Math.random() < 0.5) {
+                valeur = 1;
+            } else {
+                valeur = 2;
+            }
 
-    int valeur = random() < 0.5 ? 1 : 2;
-    grille.ecrireCase(ligne, colonne, valeur);
-}
+            grille.ecrireCase(ligne, colonne, valeur);
+            }
+        }
+    }
 public void jouerGauche() {
     int[][] avant = copieGrille();
     deplacerGauche();
@@ -253,7 +274,5 @@ public int getValeur(int ligne, int colonne) {
 public boolean estVide(int ligne, int colonne) {
     return grille.estvide(ligne, colonne);
 }
-
-
 }
 
