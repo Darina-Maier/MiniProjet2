@@ -19,5 +19,14 @@ public class THREES {
         System.out.println("Déplacement gauche");
         j.deplacerGauche();
         j.afficher();
+        System.out.println("Déplacement droite");
+        j.deplacerDroite();
+        j.afficher();
+        System.out.println("Déplacement Bas");
+        j.deplacerBas();
+        j.afficher();
+        System.out.println("Déplacement Haut");
+        j.deplacerHaut();
+        j.afficher();
     }
 }

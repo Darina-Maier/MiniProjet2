@@ -43,22 +43,125 @@ public class jeu {
     }
     return a + b;
 }
+    private boolean deplacerCaseGauche(int ligne, int col) {
+    int a = grille.lireCase(ligne, col);
+    int b = grille.lireCase(ligne, col + 1);
+
+    if (a == 0 && b != 0) {
+        grille.ecrireCase(ligne, col, b);
+        grille.ecrireCase(ligne, col + 1, 0);
+        return true;
+    }
+
+    if (peutFusionner(a, b)) {
+        grille.ecrireCase(ligne, col, fusion(a, b));
+        grille.ecrireCase(ligne, col + 1, 0);
+        return true;
+    }
+
+    return false;
+    }
+    private void deplacerLigneGauche(int ligne) {
+    for (int i = 0; i < 3; i++) {
+        deplacerCaseGauche(ligne, i);
+    }
+}
     public void deplacerGauche() {
     for (int ligne = 0; ligne < 4; ligne++) {
-        for (int col = 0; col < 3; col++) {
-            int a = grille.lireCase(ligne, col);
-            int b = grille.lireCase(ligne, col + 1);
-
-            if (a == 0 && b != 0) {
-                grille.ecrireCase(ligne, col, b);
-                grille.ecrireCase(ligne, col + 1, 0);
-            }
-            else if (peutFusionner(a, b)) {
-                grille.ecrireCase(ligne, col, fusion(a, b));
-                grille.ecrireCase(ligne, col + 1, 0);
-            }
+        for (int passage = 0; passage < 3; passage++) {
+            deplacerLigneGauche(ligne);
         }
     }
+}
+    private boolean deplacerCaseDroite(int ligne, int col) {
+    int a = grille.lireCase(ligne, col);
+    int b = grille.lireCase(ligne, col - 1);
+
+    if (a == 0 && b != 0) {
+        grille.ecrireCase(ligne, col, b);
+        grille.ecrireCase(ligne, col - 1, 0);
+        return true;
     }
+
+    if (peutFusionner(a, b)) {
+        grille.ecrireCase(ligne, col, fusion(a, b));
+        grille.ecrireCase(ligne, col - 1, 0);
+        return true;
+    }
+
+    return false;
+}
+    private void deplacerLigneDroite(int ligne) {
+    for (int col = 3; col > 0; col--) {
+        deplacerCaseDroite(ligne, col);
+    }
+}
+    public void deplacerDroite() {
+    for (int ligne = 0; ligne < 4; ligne++) {
+        for (int passage = 0; passage < 3; passage++) {
+            deplacerLigneDroite(ligne);
+        }
+    }
+}
+    private boolean deplacerCaseHaut(int ligne, int col) {
+    int a = grille.lireCase(ligne, col);
+    int b = grille.lireCase(ligne + 1, col);
+
+    if (a == 0 && b != 0) {
+        grille.ecrireCase(ligne, col, b);
+        grille.ecrireCase(ligne + 1, col, 0);
+        return true;
+    }
+
+    if (peutFusionner(a, b)) {
+        grille.ecrireCase(ligne, col, fusion(a, b));
+        grille.ecrireCase(ligne + 1, col, 0);
+        return true;
+    }
+
+    return false;
+}
+    private void deplacerColonneHaut(int col) {
+    for (int ligne = 0; ligne < 3; ligne++) {
+        deplacerCaseHaut(ligne, col);
+    }
+}
+    public void deplacerHaut() {
+    for (int col = 0; col < 4; col++) {
+        for (int passage = 0; passage < 3; passage++) {
+            deplacerColonneHaut(col);
+        }
+    }
+}
+    private boolean deplacerCaseBas(int ligne, int col) {
+    int a = grille.lireCase(ligne, col);
+    int b = grille.lireCase(ligne - 1, col);
+
+    if (a == 0 && b != 0) {
+        grille.ecrireCase(ligne, col, b);
+        grille.ecrireCase(ligne - 1, col, 0);
+        return true;
+    }
+
+    if (peutFusionner(a, b)) {
+        grille.ecrireCase(ligne, col, fusion(a, b));
+        grille.ecrireCase(ligne - 1, col, 0);
+        return true;
+    }
+
+    return false;
+}
+    private void deplacerColonneBas(int col) {
+    for (int ligne = 3; ligne > 0; ligne--) {
+        deplacerCaseBas(ligne, col);
+    }
+}
+public void deplacerBas() {
+    for (int col = 0; col < 4; col++) {
+        for (int passage = 0; passage < 3; passage++) {
+            deplacerColonneBas(col);
+        }
+    }
+}
 }
 
