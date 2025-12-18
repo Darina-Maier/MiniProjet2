@@ -10,8 +10,8 @@
 public class Grille { // on crée une grille (matrice) 4x4
     private int [][] cases; 
 
-    public Grille(int[][] cases) {
-        this.cases = new int[4][4];
+    public Grille() {
+        cases = new int[4][4];
     }
 
     public int lireCase (int ligne, int colonne) {
@@ -31,14 +31,6 @@ public class Grille { // on crée une grille (matrice) 4x4
             }
         System.out.println();
         }
-    }
-    public void vider() {
-        for (int ligne = 0; ligne < 4; ligne++) {
-            for (int colonne = 0; colonne < 4; colonne++) {
-                cases[ligne][colonne] = 0;
-            }
-        }
-    }
-    
+    } 
 }
 
