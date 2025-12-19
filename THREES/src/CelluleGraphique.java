@@ -11,7 +11,7 @@ import java.awt.Font;
  * @author maier
  */
 public class CelluleGraphique extends JButton {
-     private int ligne;
+    private int ligne;
     private int colonne;
     private jeu jeu;
 
