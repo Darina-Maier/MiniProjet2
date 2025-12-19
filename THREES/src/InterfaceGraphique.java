@@ -1,3 +1,6 @@
+
+import javax.swing.JOptionPane;
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
@@ -66,6 +69,7 @@ public class InterfaceGraphique extends javax.swing.JFrame {
         btnGauche = new javax.swing.JButton();
         score = new javax.swing.JLabel();
         nbcoups = new javax.swing.JLabel();
+        Menu = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(100, 100));
@@ -105,14 +109,17 @@ public class InterfaceGraphique extends javax.swing.JFrame {
 
         nbcoups.setText("COUPS");
 
+        Menu.setText("MENU");
+        Menu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MenuActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(297, 297, 297)
-                .addComponent(btnBas, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
@@ -122,7 +129,10 @@ public class InterfaceGraphique extends javax.swing.JFrame {
                         .addComponent(panneauGrille, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(302, 302, 302)
-                        .addComponent(btnHaut, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(btnHaut, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(297, 297, 297)
+                        .addComponent(btnBas, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -133,7 +143,11 @@ public class InterfaceGraphique extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(score, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(nbcoups, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addContainerGap(12, Short.MAX_VALUE))))
+                        .addContainerGap(12, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(Menu, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(49, 49, 49))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -145,18 +159,21 @@ public class InterfaceGraphique extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(panneauGrille, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(28, 28, 28)
-                        .addComponent(score)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(nbcoups)
-                        .addGap(106, 106, 106)
-                        .addComponent(btnDroite))
-                    .addGroup(layout.createSequentialGroup()
                         .addGap(177, 177, 177)
                         .addComponent(btnGauche)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnBas)
                 .addContainerGap(18, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(28, 28, 28)
+                .addComponent(score)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(nbcoups)
+                .addGap(106, 106, 106)
+                .addComponent(btnDroite)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(Menu)
+                .addGap(26, 26, 26))
         );
 
         pack();
@@ -186,6 +203,21 @@ public class InterfaceGraphique extends javax.swing.JFrame {
         miseAJourGrille(); 
     }//GEN-LAST:event_btnGaucheActionPerformed
 
+    private void MenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuActionPerformed
+    // TODO add your handling code here:
+    int choix = JOptionPane.showConfirmDialog(
+        this,
+        "Retourner au menu ? La partie sera perdue.",
+        "Confirmation",
+        JOptionPane.YES_NO_OPTION
+    );
+
+    if (choix == JOptionPane.YES_OPTION) {
+        new InterfaceAcceuil().setVisible(true);
+        this.dispose();
+    }
+    }//GEN-LAST:event_MenuActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -212,6 +244,7 @@ public class InterfaceGraphique extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton Menu;
     private javax.swing.JButton btnBas;
     private javax.swing.JButton btnDroite;
     private javax.swing.JButton btnGauche;
