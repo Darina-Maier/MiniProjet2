@@ -27,7 +27,7 @@ public class jeu {
             
             if (grille.estvide(ligne, colonne)) {
 
-                int valeur = (int)(Math.random() * 3) + 1;
+                int valeur = Math.random() < 0.5 ? 1 : 2;
                 grille.ecrireCase(ligne, colonne, valeur);
                 tuilesAplacer--;
             }
@@ -297,9 +297,6 @@ public int Score(){
 }
 public int coups(){
     return nbcoups;
-    
-}
-public void recommncer (){
     
 }
 }
