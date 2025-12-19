@@ -36,4 +36,5 @@ public class CelluleGraphique extends JButton {
             setBackground(Color.WHITE);
         }
     }
+
 }

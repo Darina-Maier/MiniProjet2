@@ -9,7 +9,9 @@
  */
 public class jeu {
     private Grille grille;
-
+    private int score = 0; 
+    private int nbcoups = 0;
+    
     public jeu() {
         grille = new Grille();
         initialiser();
@@ -49,10 +51,14 @@ public class jeu {
     return false;
 }
     private int fusion(int a, int b) {
-    if ((a == 1 && b == 2) || (a == 2 && b == 1)) {
-        return 3;
-    }
-    return a + b;
+        int resultat; 
+        if ((a == 1 && b == 2) || (a == 2 && b == 1)) {
+            resultat= 3;
+        } else {
+            resultat= a + b;
+        }
+        score+=resultat;
+        return resultat;
 }
     private boolean deplacerCaseGauche(int ligne, int colonne) {
     int a = grille.lireCase(ligne, colonne);
@@ -222,6 +228,7 @@ public void jouerGauche() {
     deplacerGauche();
     if (modifiee(avant)) {
         ajouterTuile();
+        nbcoups++;
     }
 }
 
@@ -230,6 +237,7 @@ public void jouerDroite() {
     deplacerDroite();
     if (modifiee(avant)) {
         ajouterTuile();
+        nbcoups++;
     }
 }
 
@@ -238,6 +246,7 @@ public void jouerHaut() {
     deplacerHaut();
     if (modifiee(avant)) {
         ajouterTuile();
+        nbcoups++;
     }
 }
 
@@ -246,6 +255,7 @@ public void jouerBas() {
     deplacerBas();
     if (modifiee(avant)) {
         ajouterTuile();
+        nbcoups++;
     }
 }
 private boolean deplacementPossible() {
@@ -273,6 +283,13 @@ public int getValeur(int ligne, int colonne) {
 
 public boolean estVide(int ligne, int colonne) {
     return grille.estvide(ligne, colonne);
+}
+public int Score(){
+    return score;
+}
+public int coups(){
+    return nbcoups;
+    
 }
 }
 

@@ -10,7 +10,7 @@
 public class InterfaceGraphique extends javax.swing.JFrame {
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(InterfaceGraphique.class.getName());
-
+    
     private jeu JeuTHREES;
     private CelluleGraphique[][] cellules;
     private void miseAJourGrille() {
@@ -22,6 +22,10 @@ public class InterfaceGraphique extends javax.swing.JFrame {
     if (JeuTHREES.estFini()) {
         javax.swing.JOptionPane.showMessageDialog(this, "Partie terminée !");
     }
+    score.setText("Score : " + JeuTHREES.Score());
+    nbcoups.setText("Nombre de Coups:" + JeuTHREES.coups());
+
+    
 }
 
     /**
@@ -45,6 +49,7 @@ public class InterfaceGraphique extends javax.swing.JFrame {
         miseAJourGrille();
     }
 
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -59,6 +64,8 @@ public class InterfaceGraphique extends javax.swing.JFrame {
         btnHaut = new javax.swing.JButton();
         btnBas = new javax.swing.JButton();
         btnGauche = new javax.swing.JButton();
+        score = new javax.swing.JLabel();
+        nbcoups = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(100, 100));
@@ -94,26 +101,39 @@ public class InterfaceGraphique extends javax.swing.JFrame {
             }
         });
 
+        score.setText("SCORE");
+
+        nbcoups.setText("COUPS");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(297, 297, 297)
+                .addComponent(btnBas, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(86, 86, 86)
                         .addComponent(btnGauche, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(28, 28, 28)
-                        .addComponent(panneauGrille, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(btnDroite))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(297, 297, 297)
-                        .addComponent(btnBas, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(panneauGrille, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(302, 302, 302)
                         .addComponent(btnHaut, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(128, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btnDroite)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(score, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(nbcoups, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addContainerGap(12, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -125,7 +145,11 @@ public class InterfaceGraphique extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(panneauGrille, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(178, 178, 178)
+                        .addGap(28, 28, 28)
+                        .addComponent(score)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(nbcoups)
+                        .addGap(106, 106, 106)
                         .addComponent(btnDroite))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(177, 177, 177)
@@ -192,6 +216,8 @@ public class InterfaceGraphique extends javax.swing.JFrame {
     private javax.swing.JButton btnDroite;
     private javax.swing.JButton btnGauche;
     private javax.swing.JButton btnHaut;
+    private javax.swing.JLabel nbcoups;
     private javax.swing.JPanel panneauGrille;
+    private javax.swing.JLabel score;
     // End of variables declaration//GEN-END:variables
 }
