@@ -224,6 +224,8 @@ private void ajouterTuile() {
         }
     }
 public void jouerGauche() {
+    if (estFini()) return;
+    
     int[][] avant = copieGrille();
     deplacerGauche();
     if (modifiee(avant)) {
@@ -233,6 +235,8 @@ public void jouerGauche() {
 }
 
 public void jouerDroite() {
+    if (estFini()) return;
+    
     int[][] avant = copieGrille();
     deplacerDroite();
     if (modifiee(avant)) {
@@ -242,6 +246,8 @@ public void jouerDroite() {
 }
 
 public void jouerHaut() {
+    if (estFini()) return;
+    
     int[][] avant = copieGrille();
     deplacerHaut();
     if (modifiee(avant)) {
@@ -251,6 +257,8 @@ public void jouerHaut() {
 }
 
 public void jouerBas() {
+    if (estFini()) return;
+    
     int[][] avant = copieGrille();
     deplacerBas();
     if (modifiee(avant)) {

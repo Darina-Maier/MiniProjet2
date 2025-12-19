@@ -23,6 +23,11 @@ public class InterfaceGraphique extends javax.swing.JFrame {
         }
     }
     if (JeuTHREES.estFini()) {
+        btnGauche.setEnabled(false);
+        btnDroite.setEnabled(false);
+        btnHaut.setEnabled(false);
+        btnBas.setEnabled(false);
+    
         javax.swing.JOptionPane.showMessageDialog(this, "Partie terminée !");
     }
     score.setText("Score : " + JeuTHREES.Score());
