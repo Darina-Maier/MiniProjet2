@@ -36,6 +36,7 @@ public class InterfaceGraphique extends javax.swing.JFrame {
      */
     public InterfaceGraphique() {
         initComponents();
+        this.getContentPane().setBackground(new java.awt.Color(153, 204, 255));
         
         JeuTHREES = new jeu();
         cellules = new CelluleGraphique[4][4];
@@ -74,6 +75,8 @@ public class InterfaceGraphique extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(100, 100));
 
+        panneauGrille.setBackground(new java.awt.Color(255, 255, 204));
+        panneauGrille.setForeground(new java.awt.Color(255, 255, 204));
         panneauGrille.setPreferredSize(new java.awt.Dimension(300, 300));
         panneauGrille.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 

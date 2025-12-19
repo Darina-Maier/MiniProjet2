@@ -33,7 +33,7 @@ public class CelluleGraphique extends JButton {
             setBackground(Color.LIGHT_GRAY);
         } else {
             setText(String.valueOf(valeur));
-            if (valeur == 2)   setBackground(Color.MAGENTA);
+            if (valeur == 2)   setBackground(new Color(253, 105, 131));
             else  setBackground(Color.WHITE);
             if (valeur == 1) setBackground(new Color(102, 178, 255));
         }
