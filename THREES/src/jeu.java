@@ -299,5 +299,8 @@ public int coups(){
     return nbcoups;
     
 }
+public void recommncer (){
+    
+}
 }
 

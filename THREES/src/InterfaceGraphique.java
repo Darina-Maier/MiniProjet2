@@ -76,6 +76,7 @@ public class InterfaceGraphique extends javax.swing.JFrame {
         score = new javax.swing.JLabel();
         nbcoups = new javax.swing.JLabel();
         Menu = new javax.swing.JButton();
+        Recommencer = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(100, 100));
@@ -124,6 +125,13 @@ public class InterfaceGraphique extends javax.swing.JFrame {
             }
         });
 
+        Recommencer.setText("RECOMMENCER");
+        Recommencer.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                RecommencerActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -155,7 +163,11 @@ public class InterfaceGraphique extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(Menu, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(49, 49, 49))))
+                        .addGap(49, 49, 49))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(Recommencer)
+                        .addGap(28, 28, 28))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -180,6 +192,8 @@ public class InterfaceGraphique extends javax.swing.JFrame {
                 .addGap(106, 106, 106)
                 .addComponent(btnDroite)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(Recommencer)
+                .addGap(18, 18, 18)
                 .addComponent(Menu)
                 .addGap(26, 26, 26))
         );
@@ -226,6 +240,29 @@ public class InterfaceGraphique extends javax.swing.JFrame {
     }
     }//GEN-LAST:event_MenuActionPerformed
 
+    private void RecommencerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RecommencerActionPerformed
+        // TODO add your handling code here:
+    JeuTHREES = new jeu();
+    cellules = new CelluleGraphique[4][4];
+    panneauGrille.removeAll();
+
+    panneauGrille.setLayout(new java.awt.GridLayout(4, 4));
+    for (int ligne = 0; ligne < 4; ligne++) {
+        for (int colonne = 0; colonne < 4; colonne++) {
+            CelluleGraphique c = new CelluleGraphique(JeuTHREES, ligne, colonne);
+            cellules[ligne][colonne] = c;
+            panneauGrille.add(c);
+        }
+    }
+
+    btnGauche.setEnabled(true);
+    btnDroite.setEnabled(true);
+    btnHaut.setEnabled(true);
+    btnBas.setEnabled(true);
+
+    miseAJourGrille();
+    }//GEN-LAST:event_RecommencerActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -253,6 +290,7 @@ public class InterfaceGraphique extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Menu;
+    private javax.swing.JButton Recommencer;
     private javax.swing.JButton btnBas;
     private javax.swing.JButton btnDroite;
     private javax.swing.JButton btnGauche;
